@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Hayot OS
 
-## Getting Started
+Shaxsiy hayotni boshqarish tizimi — vazifalar, odatlar, ibodat, o'qish, moliya, karyera va media bitta joyda.
 
-First, run the development server:
+## Texnologiyalar
+
+- Next.js (App Router) + TypeScript + Tailwind CSS
+- Prisma ORM + PostgreSQL
+- NextAuth (Credentials, JWT sessiya)
+- Railway (hosting + Postgres)
+
+## Mahalliy ishga tushirish
 
 ```bash
+npm install
+cp .env.example .env   # DATABASE_URL va AUTH_SECRET ni to'ldiring
+npx prisma db push     # sxemani bazaga qo'llash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`AUTH_SECRET` generatsiya qilish uchun:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+openssl rand -base64 32
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Railway'ga deploy qilish
 
-## Learn More
+1. Railway loyihangizga **PostgreSQL** service qo'shing (agar hali yo'q bo'lsa).
+2. Shu repo uchun yangi **service** yarating va uni GitHub reponi bilan bog'lang (yoki `railway up` orqali).
+3. Service **Variables** bo'limida quyidagilarni qo'shing:
+   - `DATABASE_URL` — Postgres service'ning `DATABASE_URL` qiymatini shu yerga referens qiling (Railway'da servicelar orasida `${{Postgres.DATABASE_URL}}` kabi referens qilish mumkin)
+   - `AUTH_SECRET` — yuqoridagi buyruq bilan generatsiya qilingan qiymat
+4. Build/Start buyruqlari avtomatik `package.json`dan olinadi (`npm run build`, `npm start`).
+5. Birinchi deploydan keyin, bazaga sxemani qo'llash uchun Railway CLI orqali bir martalik buyruq yuboring:
+   ```bash
+   railway run npx prisma db push
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+## Loyiha tuzilmasi
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `src/app/(dashboard)/` — autentifikatsiyadan o'tgan foydalanuvchi ko'radigan sahifalar (sidebar bilan)
+- `src/app/login`, `src/app/register` — kirish/ro'yxatdan o'tish
+- `src/app/api/` — route handlerlar (auth, register, tasks)
+- `src/lib/auth.ts` — NextAuth konfiguratsiyasi
+- `src/lib/prisma.ts` — Prisma client singleton
+- `prisma/schema.prisma` — barcha modullar uchun ma'lumotlar bazasi sxemasi
+- `src/proxy.ts` — himoyalangan sahifalarga kirishni tekshiruvchi proxy (Next.js 16'da `middleware` proxy deb nomlangan)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Hozirgi holat (1-bosqich)
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- ✅ Autentifikatsiya (ro'yxatdan o'tish/kirish)
+- ✅ Dashboard skeleti va navigatsiya
+- ✅ Vazifalar (Tasks) moduli — to'liq CRUD
+- ⏳ Odatlar, Ibodat, O'qish, Moliya, Karyera, Media, Analitika — sxema tayyor, UI navbatda

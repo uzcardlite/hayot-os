@@ -1,0 +1,172 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String?
+  createdAt    DateTime @default(now())
+
+  tasks         Task[]
+  habits        Habit[]
+  habitLogs     HabitLog[]
+  transactions  Transaction[]
+  learningItems LearningItem[]
+  careerItems   CareerItem[]
+  mediaLogs     MediaLog[]
+  prayerLogs    PrayerLog[]
+}
+
+model Task {
+  id        String    @id @default(cuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  notes     String?
+  dueDate   DateTime?
+  priority  Priority  @default(MEDIUM)
+  status    TaskStatus @default(TODO)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@index([userId, dueDate])
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum TaskStatus {
+  TODO
+  IN_PROGRESS
+  DONE
+}
+
+model Habit {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  targetDaysPerWeek Int  @default(7)
+  createdAt DateTime @default(now())
+  archived  Boolean  @default(false)
+
+  logs HabitLog[]
+}
+
+model HabitLog {
+  id        String   @id @default(cuid())
+  habitId   String
+  habit     Habit    @relation(fields: [habitId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  date      DateTime @db.Date
+  completed Boolean  @default(true)
+
+  @@unique([habitId, date])
+}
+
+model PrayerLog {
+  id        String      @id @default(cuid())
+  userId    String
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  date      DateTime    @db.Date
+  prayer    PrayerName
+  completed Boolean     @default(true)
+  onTime    Boolean     @default(true)
+
+  @@unique([userId, date, prayer])
+}
+
+enum PrayerName {
+  BOMDOD
+  PESHIN
+  ASR
+  SHOM
+  XUFTON
+}
+
+model Transaction {
+  id          String          @id @default(cuid())
+  userId      String
+  user        User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  amount      Decimal         @db.Decimal(14, 2)
+  type        TransactionType
+  category    String
+  note        String?
+  date        DateTime        @default(now())
+
+  @@index([userId, date])
+}
+
+enum TransactionType {
+  INCOME
+  EXPENSE
+}
+
+model LearningItem {
+  id         String          @id @default(cuid())
+  userId     String
+  user       User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title      String
+  type       LearningType
+  status     LearningStatus  @default(PLANNED)
+  progress   Int             @default(0)
+  startedAt  DateTime?
+  finishedAt DateTime?
+  notes      String?
+}
+
+enum LearningType {
+  BOOK
+  COURSE
+  SKILL
+  OTHER
+}
+
+enum LearningStatus {
+  PLANNED
+  IN_PROGRESS
+  DONE
+  DROPPED
+}
+
+model CareerItem {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title       String
+  description String?
+  category    String
+  date        DateTime @default(now())
+  link        String?
+}
+
+model MediaLog {
+  id        String    @id @default(cuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  type      MediaType
+  rating    Int?
+  notes     String?
+  date      DateTime  @default(now())
+}
+
+enum MediaType {
+  MOVIE
+  SERIES
+  VIDEO
+  ARTICLE
+  PODCAST
+  OTHER
+}
