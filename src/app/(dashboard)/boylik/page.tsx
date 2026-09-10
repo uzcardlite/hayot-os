@@ -102,26 +102,26 @@ export default function BoylikPage() {
   const assetShare = totalAssets + totalLiabilities > 0 ? (totalAssets / (totalAssets + totalLiabilities)) * 100 : 50;
 
   if (loading) {
-    return <p className="text-[#6b6b73]">Yuklanmoqda...</p>;
+    return <p className="text-[#8f8071]">Yuklanmoqda...</p>;
   }
 
   return (
     <div className="mx-auto max-w-4xl">
       <div className="mb-6 flex items-end justify-between">
         <div>
-          <h1 className="mb-1 text-2xl font-bold text-[#f5f4f2]">Boylik</h1>
-          <p className="text-sm text-[#6b6b73]">
+          <h1 className="mb-1 text-2xl font-bold text-[#f7f0e6]">Boylik</h1>
+          <p className="text-sm text-[#8f8071]">
             Aktivlar va passivlaringizning umumiy ko&apos;rinishi
           </p>
         </div>
       </div>
 
       <div
-        className="mb-8 rounded-3xl border border-[#232327] p-9"
-        style={{ background: "linear-gradient(135deg, #1a140c, #131316)" }}
+        className="mb-8 rounded-3xl border border-[#332a1f] p-9"
+        style={{ background: "linear-gradient(135deg, #1a140c, #1e1812)" }}
       >
-        <div className="mb-2 text-xs text-[#9a9aa2]">Sof boylik</div>
-        <div className="text-[36px] font-extrabold tracking-tight text-[#f5f4f2]">
+        <div className="mb-2 text-xs text-[#baa898]">Sof boylik</div>
+        <div className="text-[36px] font-extrabold tracking-tight text-[#f7f0e6]">
           {formatSum(netWorth)}
         </div>
       </div>
@@ -130,23 +130,23 @@ export default function BoylikPage() {
         {/* assets */}
         <div>
           <div className="mb-3 flex items-center justify-between">
-            <h2 className="text-sm font-bold text-[#f5f4f2]">Aktivlar</h2>
+            <h2 className="text-sm font-bold text-[#f7f0e6]">Aktivlar</h2>
             <span className="text-sm font-bold text-[#34d399]">{formatSum(totalAssets)}</span>
           </div>
 
-          <form onSubmit={addAsset} className="mb-4 flex flex-col gap-2.5 rounded-xl border border-[#232327] bg-[#131316] p-3.5">
+          <form onSubmit={addAsset} className="mb-4 flex flex-col gap-2.5 rounded-xl border border-[#332a1f] bg-[#1e1812] p-3.5">
             <input
               type="text"
               placeholder="Nomi (masalan: Uy)"
               value={assetName}
               onChange={(e) => setAssetName(e.target.value)}
-              className="rounded-lg border border-[#232327] bg-[#1a1a1e] px-3 py-2 text-sm text-[#f5f4f2] outline-none focus:border-[#ff8a3d]"
+              className="rounded-lg border border-[#332a1f] bg-[#241d16] px-3 py-2 text-sm text-[#f7f0e6] outline-none focus:border-[#f0965a]"
             />
             <div className="flex gap-2.5">
               <select
                 value={assetCategory}
                 onChange={(e) => setAssetCategory(e.target.value as AssetCategory)}
-                className="flex-1 rounded-lg border border-[#232327] bg-[#1a1a1e] px-3 py-2 text-sm text-[#f5f4f2] outline-none focus:border-[#ff8a3d]"
+                className="flex-1 rounded-lg border border-[#332a1f] bg-[#241d16] px-3 py-2 text-sm text-[#f7f0e6] outline-none focus:border-[#f0965a]"
               >
                 {Object.entries(CATEGORY_LABEL).map(([v, l]) => (
                   <option key={v} value={v}>{l}</option>
@@ -157,69 +157,69 @@ export default function BoylikPage() {
                 placeholder="Qiymati (so'm)"
                 value={assetValue}
                 onChange={(e) => setAssetValue(e.target.value)}
-                className="flex-1 rounded-lg border border-[#232327] bg-[#1a1a1e] px-3 py-2 text-sm text-[#f5f4f2] outline-none focus:border-[#ff8a3d]"
+                className="flex-1 rounded-lg border border-[#332a1f] bg-[#241d16] px-3 py-2 text-sm text-[#f7f0e6] outline-none focus:border-[#f0965a]"
               />
             </div>
-            <button type="submit" className="rounded-lg bg-[#ff8a3d] py-2 text-sm font-semibold text-[#0a0a0d]">
+            <button type="submit" className="rounded-lg bg-[#f0965a] py-2 text-sm font-semibold text-[#14100c]">
               + Aktiv qo&apos;shish
             </button>
           </form>
 
           <div className="flex flex-col gap-2.5">
             {assets.map((a) => (
-              <div key={a.id} className="flex items-center gap-3 rounded-2xl border border-[#232327] bg-[#131316] px-4 py-3.5">
+              <div key={a.id} className="flex items-center gap-3 rounded-2xl border border-[#332a1f] bg-[#1e1812] px-4 py-3.5">
                 <div className="flex-1">
-                  <p className="text-sm font-semibold text-[#f5f4f2]">{a.name}</p>
-                  <p className="text-xs text-[#6b6b73]">{CATEGORY_LABEL[a.category]}</p>
+                  <p className="text-sm font-semibold text-[#f7f0e6]">{a.name}</p>
+                  <p className="text-xs text-[#8f8071]">{CATEGORY_LABEL[a.category]}</p>
                 </div>
-                <p className="text-sm font-bold text-[#f5f4f2]">{formatSum(Number(a.value))}</p>
-                <button onClick={() => removeAsset(a.id)} className="text-[#6b6b73] hover:text-red-400">✕</button>
+                <p className="text-sm font-bold text-[#f7f0e6]">{formatSum(Number(a.value))}</p>
+                <button onClick={() => removeAsset(a.id)} className="text-[#8f8071] hover:text-red-400">✕</button>
               </div>
             ))}
-            {assets.length === 0 && <p className="text-sm text-[#6b6b73]">Hozircha aktiv qo&apos;shilmagan.</p>}
+            {assets.length === 0 && <p className="text-sm text-[#8f8071]">Hozircha aktiv qo&apos;shilmagan.</p>}
           </div>
         </div>
 
         {/* liabilities */}
         <div>
           <div className="mb-3 flex items-center justify-between">
-            <h2 className="text-sm font-bold text-[#f5f4f2]">Passivlar</h2>
+            <h2 className="text-sm font-bold text-[#f7f0e6]">Passivlar</h2>
             <span className="text-sm font-bold text-[#f87171]">{formatSum(totalLiabilities)}</span>
           </div>
 
-          <form onSubmit={addLiability} className="mb-4 flex flex-col gap-2.5 rounded-xl border border-[#232327] bg-[#131316] p-3.5">
+          <form onSubmit={addLiability} className="mb-4 flex flex-col gap-2.5 rounded-xl border border-[#332a1f] bg-[#1e1812] p-3.5">
             <input
               type="text"
               placeholder="Nomi (masalan: Ipoteka krediti)"
               value={liabName}
               onChange={(e) => setLiabName(e.target.value)}
-              className="rounded-lg border border-[#232327] bg-[#1a1a1e] px-3 py-2 text-sm text-[#f5f4f2] outline-none focus:border-[#ff8a3d]"
+              className="rounded-lg border border-[#332a1f] bg-[#241d16] px-3 py-2 text-sm text-[#f7f0e6] outline-none focus:border-[#f0965a]"
             />
             <input
               type="number"
               placeholder="Qolgan summa (so'm)"
               value={liabAmount}
               onChange={(e) => setLiabAmount(e.target.value)}
-              className="rounded-lg border border-[#232327] bg-[#1a1a1e] px-3 py-2 text-sm text-[#f5f4f2] outline-none focus:border-[#ff8a3d]"
+              className="rounded-lg border border-[#332a1f] bg-[#241d16] px-3 py-2 text-sm text-[#f7f0e6] outline-none focus:border-[#f0965a]"
             />
-            <button type="submit" className="rounded-lg bg-[#ff8a3d] py-2 text-sm font-semibold text-[#0a0a0d]">
+            <button type="submit" className="rounded-lg bg-[#f0965a] py-2 text-sm font-semibold text-[#14100c]">
               + Passiv qo&apos;shish
             </button>
           </form>
 
           <div className="flex flex-col gap-2.5">
             {liabilities.map((l) => (
-              <div key={l.id} className="flex items-center gap-3 rounded-2xl border border-[#232327] bg-[#131316] px-4 py-3.5">
-                <p className="flex-1 text-sm font-semibold text-[#f5f4f2]">{l.name}</p>
+              <div key={l.id} className="flex items-center gap-3 rounded-2xl border border-[#332a1f] bg-[#1e1812] px-4 py-3.5">
+                <p className="flex-1 text-sm font-semibold text-[#f7f0e6]">{l.name}</p>
                 <p className="text-sm font-bold text-[#f87171]">{formatSum(Number(l.amount))}</p>
-                <button onClick={() => removeLiability(l.id)} className="text-[#6b6b73] hover:text-red-400">✕</button>
+                <button onClick={() => removeLiability(l.id)} className="text-[#8f8071] hover:text-red-400">✕</button>
               </div>
             ))}
-            {liabilities.length === 0 && <p className="text-sm text-[#6b6b73]">Hozircha passiv qo&apos;shilmagan.</p>}
+            {liabilities.length === 0 && <p className="text-sm text-[#8f8071]">Hozircha passiv qo&apos;shilmagan.</p>}
           </div>
 
           {(totalAssets > 0 || totalLiabilities > 0) && (
-            <div className="mt-4 rounded-2xl border border-dashed border-[#2b2b30] p-4 text-center text-xs text-[#6b6b73]">
+            <div className="mt-4 rounded-2xl border border-dashed border-[#3d3226] p-4 text-center text-xs text-[#8f8071]">
               Aktivlar / passivlar nisbati
               <div className="mt-2.5 flex h-2 overflow-hidden rounded-full">
                 <div className="bg-[#34d399]" style={{ width: `${assetShare}%` }} />

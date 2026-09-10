@@ -45,7 +45,7 @@ export function AvatarCreator({ onComplete }: { onComplete: (url: string) => voi
     <iframe
       ref={iframeRef}
       src="https://demo.readyplayer.me/avatar?frameApi&bodyType=fullbody"
-      className="h-full w-full rounded-2xl border border-[#232327]"
+      className="h-full w-full rounded-2xl border border-[#332a1f]"
       allow="camera *; microphone *"
       title="3D avatar yaratish"
     />

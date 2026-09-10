@@ -61,38 +61,38 @@ export default function OnboardingPage() {
 
   if (done) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-[#0a0a0d] text-[#f5f4f2]">
-        <div className="pointer-events-none absolute top-[-200px] left-1/2 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-[#ff8a3d] opacity-10 blur-[140px]" />
+      <div className="flex min-h-screen items-center justify-center bg-[#14100c] text-[#f7f0e6]">
+        <div className="pointer-events-none absolute top-[-200px] left-1/2 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-[#f0965a] opacity-10 blur-[140px]" />
         <div className="relative z-10 flex w-full max-w-xl flex-col items-center px-6 text-center">
-          <div className="mb-7 flex h-16 w-16 items-center justify-center rounded-[20px] bg-[#ff8a3d]">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0a0a0d" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <div className="mb-7 flex h-16 w-16 items-center justify-center rounded-[20px] bg-[#f0965a]">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#14100c" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 12.5 L10 17.5 L20 6.5" />
             </svg>
           </div>
-          <div className="mb-3 text-xs font-semibold tracking-widest text-[#ff8a3d]">
+          <div className="mb-3 text-xs font-semibold tracking-widest text-[#f0965a]">
             PROFIL TAYYOR
           </div>
           <h1 className="mb-3 text-3xl font-bold tracking-tight">
             Sizning Hayot OS profilingiz shakllandi
           </h1>
-          <p className="mb-10 max-w-md text-sm leading-relaxed text-[#9a9aa2]">
+          <p className="mb-10 max-w-md text-sm leading-relaxed text-[#baa898]">
             Javoblaringiz asosida bosh sahifangiz va ustuvor modullaringiz
             sozlandi.
           </p>
 
           <div className="mb-10 grid w-full grid-cols-3 gap-4">
-            <div className="rounded-2xl border border-[#232327] bg-[#131316] p-5 text-left">
-              <div className="mb-2 text-[11px] text-[#6b6b73]">ASOSIY FOKUS</div>
+            <div className="rounded-2xl border border-[#332a1f] bg-[#1e1812] p-5 text-left">
+              <div className="mb-2 text-[11px] text-[#8f8071]">ASOSIY FOKUS</div>
               <div className="text-sm font-semibold">{focusArea}</div>
             </div>
-            <div className="rounded-2xl border border-[#232327] bg-[#131316] p-5 text-left">
-              <div className="mb-2 text-[11px] text-[#6b6b73]">UYQU TARTIBI</div>
+            <div className="rounded-2xl border border-[#332a1f] bg-[#1e1812] p-5 text-left">
+              <div className="mb-2 text-[11px] text-[#8f8071]">UYQU TARTIBI</div>
               <div className="text-sm font-semibold">
                 {sleepTime} — {wakeTime}
               </div>
             </div>
-            <div className="rounded-2xl border border-[#232327] bg-[#131316] p-5 text-left">
-              <div className="mb-2 text-[11px] text-[#6b6b73]">IBODAT</div>
+            <div className="rounded-2xl border border-[#332a1f] bg-[#1e1812] p-5 text-left">
+              <div className="mb-2 text-[11px] text-[#8f8071]">IBODAT</div>
               <div className="text-sm font-semibold">
                 {prayerImportant ? "Muhim" : "Hozircha yo'q"}
               </div>
@@ -101,10 +101,10 @@ export default function OnboardingPage() {
 
           <button
             onClick={() => router.push("/dashboard")}
-            className="flex items-center gap-2 rounded-full bg-[#ff8a3d] px-9 py-4 text-[15px] font-semibold text-[#0a0a0d]"
+            className="flex items-center gap-2 rounded-full bg-[#f0965a] px-9 py-4 text-[15px] font-semibold text-[#14100c]"
           >
             Bosh sahifaga o&apos;tish
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0a0a0d" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#14100c" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M9 5 L16 12 L9 19" />
             </svg>
           </button>
@@ -114,17 +114,17 @@ export default function OnboardingPage() {
   }
 
   return (
-    <div className="flex min-h-screen bg-[#0a0a0d] text-[#f5f4f2]">
+    <div className="flex min-h-screen bg-[#14100c] text-[#f7f0e6]">
       {/* left context panel */}
       <div className="relative hidden w-[420px] flex-shrink-0 flex-col justify-between overflow-hidden p-12 lg:flex"
-        style={{ background: "radial-gradient(120% 100% at 0% 0%, #1c1610 0%, #0d0d0f 55%)" }}
+        style={{ background: "radial-gradient(120% 100% at 0% 0%, #1c1610 0%, #120e0a 55%)" }}
       >
-        <div className="pointer-events-none absolute -top-28 -left-28 h-[380px] w-[380px] rounded-full bg-[#ff8a3d] opacity-10 blur-[100px]" />
+        <div className="pointer-events-none absolute -top-28 -left-28 h-[380px] w-[380px] rounded-full bg-[#f0965a] opacity-10 blur-[100px]" />
 
         <div className="relative z-10 flex items-center gap-2.5">
-          <div className="flex h-8 w-8 items-center justify-center rounded-[10px] bg-[#ff8a3d]">
+          <div className="flex h-8 w-8 items-center justify-center rounded-[10px] bg-[#f0965a]">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="#0a0a0d" />
+              <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="#14100c" />
             </svg>
           </div>
           <span className="text-base font-bold">Hayot OS</span>
@@ -134,7 +134,7 @@ export default function OnboardingPage() {
           <h1 className="mb-4 max-w-xs text-[28px] font-bold leading-tight tracking-tight">
             Hayotingizni birga tizimlashtiramiz
           </h1>
-          <p className="mb-9 max-w-xs text-sm leading-relaxed text-[#9a9aa2]">
+          <p className="mb-9 max-w-xs text-sm leading-relaxed text-[#baa898]">
             Bir necha savolga javob bering — shunga qarab bosh sahifangiz siz
             uchun moslashtiriladi.
           </p>
@@ -143,23 +143,23 @@ export default function OnboardingPage() {
             {SECTIONS.map((section, i) => (
               <div key={section} className="flex items-center gap-3">
                 {i < step ? (
-                  <div className="flex h-[30px] w-[30px] flex-shrink-0 items-center justify-center rounded-[9px] bg-[#ff8a3d]">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0a0a0d" strokeWidth="2.5" strokeLinecap="round">
+                  <div className="flex h-[30px] w-[30px] flex-shrink-0 items-center justify-center rounded-[9px] bg-[#f0965a]">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#14100c" strokeWidth="2.5" strokeLinecap="round">
                       <path d="M5 12.5 L10 17.5 L19 6.5" />
                     </svg>
                   </div>
                 ) : i === step ? (
                   <div className="flex h-[30px] w-[30px] flex-shrink-0 items-center justify-center rounded-[9px] border border-[#3a2f22] bg-[#1e1a14]">
-                    <span className="text-xs font-bold text-[#ff8a3d]">{i + 1}</span>
+                    <span className="text-xs font-bold text-[#f0965a]">{i + 1}</span>
                   </div>
                 ) : (
-                  <div className="flex h-[30px] w-[30px] flex-shrink-0 items-center justify-center rounded-[9px] border border-[#232327] bg-[#18181c]">
-                    <span className="text-xs font-bold text-[#6b6b73]">{i + 1}</span>
+                  <div className="flex h-[30px] w-[30px] flex-shrink-0 items-center justify-center rounded-[9px] border border-[#332a1f] bg-[#201a14]">
+                    <span className="text-xs font-bold text-[#8f8071]">{i + 1}</span>
                   </div>
                 )}
                 <span
                   className={`text-sm ${
-                    i === step ? "font-semibold text-[#f5f4f2]" : i < step ? "text-[#e8e7e4]" : "text-[#9a9aa2] opacity-60"
+                    i === step ? "font-semibold text-[#f7f0e6]" : i < step ? "text-[#ece3d6]" : "text-[#baa898] opacity-60"
                   }`}
                 >
                   {section}
@@ -169,7 +169,7 @@ export default function OnboardingPage() {
           </div>
         </div>
 
-        <div className="relative z-10 text-xs text-[#6b6b73]">
+        <div className="relative z-10 text-xs text-[#8f8071]">
           Taxminan 3 daqiqa vaqt oladi
         </div>
       </div>
@@ -181,12 +181,12 @@ export default function OnboardingPage() {
             {SECTIONS.map((s, i) => (
               <div
                 key={s}
-                className={`h-1 flex-1 rounded-full ${i <= step ? "bg-[#ff8a3d]" : "bg-[#232327]"}`}
+                className={`h-1 flex-1 rounded-full ${i <= step ? "bg-[#f0965a]" : "bg-[#332a1f]"}`}
               />
             ))}
           </div>
 
-          <div className="mb-2.5 text-xs font-semibold tracking-widest text-[#ff8a3d]">
+          <div className="mb-2.5 text-xs font-semibold tracking-widest text-[#f0965a]">
             SAVOL {step + 1} / {SECTIONS.length}
           </div>
 
@@ -195,7 +195,7 @@ export default function OnboardingPage() {
               <h2 className="mb-2 text-2xl font-bold tracking-tight">
                 Jinsingiz va yoshingiz?
               </h2>
-              <p className="mb-8 text-sm text-[#6b6b73]">
+              <p className="mb-8 text-sm text-[#8f8071]">
                 Profilingiz va tavsiyalar shunga moslashtiriladi
               </p>
 
@@ -206,22 +206,22 @@ export default function OnboardingPage() {
                     onClick={() => setGender(g)}
                     className={`relative flex flex-col items-center gap-3 rounded-2xl border-[1.5px] p-5 ${
                       gender === g
-                        ? "border-[#ff8a3d] bg-[#1e1a14]"
-                        : "border-[#232327] bg-[#131316]"
+                        ? "border-[#f0965a] bg-[#1e1a14]"
+                        : "border-[#332a1f] bg-[#1e1812]"
                     }`}
                   >
                     {gender === g && (
-                      <div className="absolute right-3 top-3 flex h-5 w-5 items-center justify-center rounded-full bg-[#ff8a3d]">
-                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#0a0a0d" strokeWidth="3" strokeLinecap="round">
+                      <div className="absolute right-3 top-3 flex h-5 w-5 items-center justify-center rounded-full bg-[#f0965a]">
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#14100c" strokeWidth="3" strokeLinecap="round">
                           <path d="M5 12.5 L10 17.5 L19 6.5" />
                         </svg>
                       </div>
                     )}
-                    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke={gender === g ? "#ff8a3d" : "#9a9aa2"} strokeWidth="1.8">
+                    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke={gender === g ? "#f0965a" : "#baa898"} strokeWidth="1.8">
                       <circle cx="12" cy="8" r="4.2" />
                       <path d="M5 21 C5 15.5 8 13 12 13 C16 13 19 15.5 19 21" />
                     </svg>
-                    <span className={`text-sm font-semibold ${gender === g ? "text-[#f5f4f2]" : "text-[#c9c9ce]"}`}>
+                    <span className={`text-sm font-semibold ${gender === g ? "text-[#f7f0e6]" : "text-[#d9cdbe]"}`}>
                       {g === "MALE" ? "Erkak" : "Ayol"}
                     </span>
                   </button>
@@ -229,7 +229,7 @@ export default function OnboardingPage() {
               </div>
 
               <div className="mb-9">
-                <div className="mb-2.5 text-xs text-[#9a9aa2]">Yoshingiz</div>
+                <div className="mb-2.5 text-xs text-[#baa898]">Yoshingiz</div>
                 <div className="flex items-center gap-4">
                   <input
                     type="range"
@@ -237,9 +237,9 @@ export default function OnboardingPage() {
                     max={80}
                     value={age}
                     onChange={(e) => setAge(Number(e.target.value))}
-                    className="h-1.5 flex-1 accent-[#ff8a3d]"
+                    className="h-1.5 flex-1 accent-[#f0965a]"
                   />
-                  <div className="flex h-10 w-14 items-center justify-center rounded-[10px] border border-[#232327] bg-[#131316] text-sm font-semibold">
+                  <div className="flex h-10 w-14 items-center justify-center rounded-[10px] border border-[#332a1f] bg-[#1e1812] text-sm font-semibold">
                     {age}
                   </div>
                 </div>
@@ -252,7 +252,7 @@ export default function OnboardingPage() {
               <h2 className="mb-2 text-2xl font-bold tracking-tight">
                 Asosiy maqsadingiz nima?
               </h2>
-              <p className="mb-8 text-sm text-[#6b6b73]">
+              <p className="mb-8 text-sm text-[#8f8071]">
                 Hozirgi eng katta ustuvorligingizni ayting
               </p>
 
@@ -261,10 +261,10 @@ export default function OnboardingPage() {
                 placeholder="Masalan: sog'lig'imni tiklash, karyerada o'sish..."
                 value={mainGoal}
                 onChange={(e) => setMainGoal(e.target.value)}
-                className="mb-8 w-full rounded-xl border border-[#232327] bg-[#131316] px-4 py-3 text-sm text-[#f5f4f2] outline-none focus:border-[#ff8a3d]"
+                className="mb-8 w-full rounded-xl border border-[#332a1f] bg-[#1e1812] px-4 py-3 text-sm text-[#f7f0e6] outline-none focus:border-[#f0965a]"
               />
 
-              <div className="mb-2.5 text-xs text-[#9a9aa2]">Qaysi soha ustuvor?</div>
+              <div className="mb-2.5 text-xs text-[#baa898]">Qaysi soha ustuvor?</div>
               <div className="grid grid-cols-3 gap-3">
                 {FOCUS_AREAS.map((area) => (
                   <button
@@ -272,8 +272,8 @@ export default function OnboardingPage() {
                     onClick={() => setFocusArea(area)}
                     className={`rounded-xl border-[1.5px] px-3 py-3 text-sm font-medium ${
                       focusArea === area
-                        ? "border-[#ff8a3d] bg-[#1e1a14] text-[#f5f4f2]"
-                        : "border-[#232327] bg-[#131316] text-[#c9c9ce]"
+                        ? "border-[#f0965a] bg-[#1e1a14] text-[#f7f0e6]"
+                        : "border-[#332a1f] bg-[#1e1812] text-[#d9cdbe]"
                     }`}
                   >
                     {area}
@@ -288,27 +288,27 @@ export default function OnboardingPage() {
               <h2 className="mb-2 text-2xl font-bold tracking-tight">
                 Kunlik tartibingiz?
               </h2>
-              <p className="mb-8 text-sm text-[#6b6b73]">
+              <p className="mb-8 text-sm text-[#8f8071]">
                 Odatiy uyg&apos;onish va yotish vaqtingiz
               </p>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <div className="mb-2.5 text-xs text-[#9a9aa2]">Uyg&apos;onish vaqti</div>
+                  <div className="mb-2.5 text-xs text-[#baa898]">Uyg&apos;onish vaqti</div>
                   <input
                     type="time"
                     value={wakeTime}
                     onChange={(e) => setWakeTime(e.target.value)}
-                    className="w-full rounded-xl border border-[#232327] bg-[#131316] px-4 py-3 text-sm text-[#f5f4f2] outline-none focus:border-[#ff8a3d]"
+                    className="w-full rounded-xl border border-[#332a1f] bg-[#1e1812] px-4 py-3 text-sm text-[#f7f0e6] outline-none focus:border-[#f0965a]"
                   />
                 </div>
                 <div>
-                  <div className="mb-2.5 text-xs text-[#9a9aa2]">Yotish vaqti</div>
+                  <div className="mb-2.5 text-xs text-[#baa898]">Yotish vaqti</div>
                   <input
                     type="time"
                     value={sleepTime}
                     onChange={(e) => setSleepTime(e.target.value)}
-                    className="w-full rounded-xl border border-[#232327] bg-[#131316] px-4 py-3 text-sm text-[#f5f4f2] outline-none focus:border-[#ff8a3d]"
+                    className="w-full rounded-xl border border-[#332a1f] bg-[#1e1812] px-4 py-3 text-sm text-[#f7f0e6] outline-none focus:border-[#f0965a]"
                   />
                 </div>
               </div>
@@ -320,7 +320,7 @@ export default function OnboardingPage() {
               <h2 className="mb-2 text-2xl font-bold tracking-tight">
                 Ibodat sizning kundalik hayotingizda muhimmi?
               </h2>
-              <p className="mb-8 text-sm text-[#6b6b73]">
+              <p className="mb-8 text-sm text-[#8f8071]">
                 Bu Ibodat modulini sozlashda hisobga olinadi
               </p>
 
@@ -334,8 +334,8 @@ export default function OnboardingPage() {
                     onClick={() => setPrayerImportant(opt.v)}
                     className={`rounded-2xl border-[1.5px] px-5 py-6 text-sm font-semibold ${
                       prayerImportant === opt.v
-                        ? "border-[#ff8a3d] bg-[#1e1a14] text-[#f5f4f2]"
-                        : "border-[#232327] bg-[#131316] text-[#c9c9ce]"
+                        ? "border-[#f0965a] bg-[#1e1a14] text-[#f7f0e6]"
+                        : "border-[#332a1f] bg-[#1e1812] text-[#d9cdbe]"
                     }`}
                   >
                     {opt.l}
@@ -350,7 +350,7 @@ export default function OnboardingPage() {
               <h2 className="mb-2 text-2xl font-bold tracking-tight">
                 Oylik daromadingiz qaysi oraliqda?
               </h2>
-              <p className="mb-8 text-sm text-[#6b6b73]">
+              <p className="mb-8 text-sm text-[#8f8071]">
                 Moliya modulini sizga moslab boshlaymiz
               </p>
 
@@ -361,8 +361,8 @@ export default function OnboardingPage() {
                     onClick={() => setIncomeRange(range)}
                     className={`rounded-xl border-[1.5px] px-4 py-3 text-left text-sm font-medium ${
                       incomeRange === range
-                        ? "border-[#ff8a3d] bg-[#1e1a14] text-[#f5f4f2]"
-                        : "border-[#232327] bg-[#131316] text-[#c9c9ce]"
+                        ? "border-[#f0965a] bg-[#1e1a14] text-[#f7f0e6]"
+                        : "border-[#332a1f] bg-[#1e1812] text-[#d9cdbe]"
                     }`}
                   >
                     {range}
@@ -377,24 +377,24 @@ export default function OnboardingPage() {
               <h2 className="mb-2 text-2xl font-bold tracking-tight">
                 3D avataringizni yarating
               </h2>
-              <p className="mb-6 text-sm text-[#6b6b73]">
+              <p className="mb-6 text-sm text-[#8f8071]">
                 O&apos;zingizga o&apos;xshash 3D qiyofa tanlang — bosh
                 sahifangizda jonli 360° ko&apos;rinishda chiqadi
               </p>
 
-              <div className="mb-6 flex h-[420px] flex-col items-center justify-center gap-3 rounded-2xl border border-[#232327] bg-[#131316] px-8 text-center">
+              <div className="mb-6 flex h-[420px] flex-col items-center justify-center gap-3 rounded-2xl border border-[#332a1f] bg-[#1e1812] px-8 text-center">
                 {submitting ? (
-                  <span className="text-sm text-[#9a9aa2]">Saqlanmoqda...</span>
+                  <span className="text-sm text-[#baa898]">Saqlanmoqda...</span>
                 ) : (
                   <>
-                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#6b6b73" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#8f8071" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                       <circle cx="12" cy="8" r="4.2" />
                       <path d="M5 21 C5 15.5 8 13 12 13 C16 13 19 15.5 19 21" />
                     </svg>
-                    <p className="text-sm font-medium text-[#c9c9ce]">
+                    <p className="text-sm font-medium text-[#d9cdbe]">
                       3D avatar yaratish hozircha mavjud emas
                     </p>
-                    <p className="max-w-xs text-xs text-[#6b6b73]">
+                    <p className="max-w-xs text-xs text-[#8f8071]">
                       Bu funksiyani ta&apos;minlovchi xizmat yopilgani sababli
                       vaqtincha o&apos;chirilgan. Tez orada boshqa provayder
                       bilan qayta ishga tushadi.
@@ -406,7 +406,7 @@ export default function OnboardingPage() {
               <button
                 onClick={() => finish(null)}
                 disabled={submitting}
-                className="text-sm text-[#6b6b73] disabled:opacity-60"
+                className="text-sm text-[#8f8071] disabled:opacity-60"
               >
                 Hozircha o&apos;tkazib yuborish →
               </button>
@@ -418,7 +418,7 @@ export default function OnboardingPage() {
               {step > 0 ? (
                 <button
                   onClick={() => setStep(step - 1)}
-                  className="text-sm text-[#6b6b73]"
+                  className="text-sm text-[#8f8071]"
                 >
                   ← Ortga
                 </button>
@@ -428,10 +428,10 @@ export default function OnboardingPage() {
 
               <button
                 onClick={() => setStep(step + 1)}
-                className="flex items-center gap-2 rounded-full bg-[#ff8a3d] px-6 py-3 text-sm font-semibold text-[#0a0a0d]"
+                className="flex items-center gap-2 rounded-full bg-[#f0965a] px-6 py-3 text-sm font-semibold text-[#14100c]"
               >
                 Davom etish
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0a0a0d" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#14100c" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M9 5 L16 12 L9 19" />
                 </svg>
               </button>

@@ -81,17 +81,17 @@ export function AvatarViewer({ url }: { url: string }) {
 
       <button
         onClick={() => nudge(-1)}
-        className="absolute left-6 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[#2b2b30] bg-white/[0.06]"
+        className="absolute left-6 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[#3d3226] bg-white/[0.06]"
       >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e8e7e4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ece3d6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M15 5 L8 12 L15 19" />
         </svg>
       </button>
       <button
         onClick={() => nudge(1)}
-        className="absolute right-6 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[#2b2b30] bg-white/[0.06]"
+        className="absolute right-6 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[#3d3226] bg-white/[0.06]"
       >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e8e7e4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ece3d6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M9 5 L16 12 L9 19" />
         </svg>
       </button>

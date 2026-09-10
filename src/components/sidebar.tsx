@@ -148,10 +148,10 @@ function NavLink({ item, active }: { item: NavItem; active: boolean }) {
       href={item.href}
       title={item.label}
       className={`flex h-12 w-12 items-center justify-center rounded-2xl transition ${
-        active ? "bg-[#ff8a3d2a]" : "hover:bg-[#131316]"
+        active ? "bg-[#f0965a2a]" : "hover:bg-[#1e1812]"
       }`}
     >
-      {item.icon(active ? "#ff8a3d" : "#6b6b73")}
+      {item.icon(active ? "#f0965a" : "#8f8071")}
     </Link>
   );
 }
@@ -161,10 +161,10 @@ export function Sidebar() {
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
 
   return (
-    <aside className="relative z-10 flex w-[84px] flex-shrink-0 flex-col items-center gap-1.5 border-r border-[#1c1c20] py-6">
-      <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-[#ff8a3d]">
+    <aside className="relative z-10 flex w-[84px] flex-shrink-0 flex-col items-center gap-1.5 border-r border-[#281f17] py-6">
+      <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-[#f0965a]">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-          <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="#0a0a0d" />
+          <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="#14100c" />
         </svg>
       </div>
 
@@ -172,7 +172,7 @@ export function Sidebar() {
 
       {GROUPS.map((group, i) => (
         <div key={i} className="flex flex-col items-center gap-1.5">
-          <div className="my-1.5 h-px w-7 bg-[#1e1e22]" />
+          <div className="my-1.5 h-px w-7 bg-[#2a2119]" />
           {group.map((item) => (
             <NavLink key={item.href} item={item} active={isActive(item.href)} />
           ))}
@@ -182,9 +182,9 @@ export function Sidebar() {
       <button
         onClick={() => signOut({ callbackUrl: "/login" })}
         title="Chiqish"
-        className="mt-auto flex h-12 w-12 items-center justify-center rounded-2xl hover:bg-[#131316]"
+        className="mt-auto flex h-12 w-12 items-center justify-center rounded-2xl hover:bg-[#1e1812]"
       >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6b6b73" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8f8071" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M9 21 H5.5 A2 2 0 0 1 3.5 19 V5 A2 2 0 0 1 5.5 3 H9" />
           <path d="M16 17 L21 12 L16 7" />
           <path d="M21 12 H9" />
