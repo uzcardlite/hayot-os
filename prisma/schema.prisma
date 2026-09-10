@@ -14,6 +14,16 @@ model User {
   name         String?
   createdAt    DateTime @default(now())
 
+  onboardingCompleted Boolean  @default(false)
+  gender              Gender?
+  age                 Int?
+  mainGoal            String?
+  focusArea           String?
+  wakeTime            String?
+  sleepTime           String?
+  prayerImportant     Boolean?
+  incomeRange         String?
+
   tasks         Task[]
   habits        Habit[]
   habitLogs     HabitLog[]
@@ -22,6 +32,11 @@ model User {
   careerItems   CareerItem[]
   mediaLogs     MediaLog[]
   prayerLogs    PrayerLog[]
+}
+
+enum Gender {
+  MALE
+  FEMALE
 }
 
 model Task {
