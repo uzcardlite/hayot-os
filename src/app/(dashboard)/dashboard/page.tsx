@@ -50,10 +50,14 @@ export default async function DashboardPage() {
     transactionsMonth,
     recentTasks,
     recentTransactions,
+    assets,
+    liabilities,
+    projectsCount,
+    skills,
   ] = await Promise.all([
     prisma.user.findUnique({
       where: { id: userId },
-      select: { name: true, gender: true, avatarUrl: true },
+      select: { name: true, gender: true, avatarUrl: true, title: true },
     }),
     prisma.task.count({ where: { userId, status: { not: "DONE" } } }),
     prisma.task.count({ where: { userId, status: "DONE" } }),
@@ -90,6 +94,15 @@ export default async function DashboardPage() {
       orderBy: { date: "desc" },
       take: 3,
       select: { category: true, type: true, date: true },
+    }),
+    prisma.asset.findMany({ where: { userId }, select: { value: true } }),
+    prisma.liability.findMany({ where: { userId }, select: { amount: true } }),
+    prisma.project.count({ where: { userId } }),
+    prisma.skill.findMany({
+      where: { userId },
+      orderBy: { proficiency: "desc" },
+      take: 3,
+      select: { name: true },
     }),
   ]);
 
@@ -136,6 +149,10 @@ export default async function DashboardPage() {
     .slice(0, 4);
 
   const isFemale = user?.gender === "FEMALE";
+
+  const totalAssets = assets.reduce((s, a) => s + Number(a.value), 0);
+  const totalLiabilities = liabilities.reduce((s, l) => s + Number(l.amount), 0);
+  const netWorth = totalAssets - totalLiabilities;
 
   return (
     <div className="grid grid-cols-1 gap-5 xl:grid-cols-[1.85fr_1fr]">
@@ -214,7 +231,7 @@ export default async function DashboardPage() {
         </div>
 
         {/* module cards */}
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
+        <div className="grid grid-cols-2 gap-5 lg:grid-cols-4">
           <div className="flex flex-col rounded-[20px] border border-[#232327] bg-[#131316] p-5">
             <div className="mb-3.5 flex items-center gap-2.5">
               <div className="flex h-[34px] w-[34px] items-center justify-center rounded-[10px] bg-[#ff8a3d2a]">
@@ -299,11 +316,59 @@ export default async function DashboardPage() {
               </svg>
             </div>
           </div>
+
+          <Link
+            href="/boylik"
+            className="flex flex-col rounded-[20px] border border-[#ff8a3d55] bg-[#1a140c] p-5"
+          >
+            <div className="mb-3.5 flex items-center gap-2.5">
+              <div className="flex h-[34px] w-[34px] items-center justify-center rounded-[10px] bg-[#ff8a3d2a]">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="8.5" />
+                  <path d="M12 7.5 V16.5" />
+                  <path d="M14.8 9.6 C14.8 8.3 13.6 7.5 12 7.5 C10.2 7.5 9 8.4 9 9.7 C9 12.3 14.8 11 14.8 13.7 C14.8 15 13.6 15.9 12 15.9 C10.4 15.9 9.2 15.1 9.2 13.8" />
+                </svg>
+              </div>
+              <div className="text-sm font-semibold">Boylik</div>
+            </div>
+            <div className="flex flex-1 flex-col items-center justify-center">
+              <div className="text-xl font-extrabold">
+                {new Intl.NumberFormat("uz-UZ", { notation: "compact" }).format(netWorth)}
+              </div>
+              <div className="mt-1 text-[11px] text-[#9a9aa2]">sof boylik, so&apos;m</div>
+            </div>
+          </Link>
         </div>
       </div>
 
       {/* right column */}
       <div className="flex flex-col gap-5">
+        <Link
+          href="/portfolio"
+          className="rounded-[20px] border border-[#ff8a3d55] bg-[#1a140c] p-[18px]"
+        >
+          <div className="mb-3.5 flex items-center gap-3">
+            <div className="h-[46px] w-[46px] flex-shrink-0 rounded-2xl bg-gradient-to-br from-[#ff8a3d] to-[#7a3d10]" />
+            <div className="min-w-0">
+              <div className="truncate text-sm font-semibold">Portfolio</div>
+              <div className="truncate text-[11px] text-[#9a9aa2]">{user?.title || "Lavozimingizni qo'shing"}</div>
+            </div>
+          </div>
+          <div className="mb-3.5 flex flex-wrap gap-1.5">
+            {skills.length > 0 ? (
+              skills.map((s) => (
+                <span key={s.name} className="rounded-full bg-[#232327] px-2.5 py-1 text-[10px] text-[#c9c9ce]">{s.name}</span>
+              ))
+            ) : (
+              <span className="text-[11px] text-[#6b6b73]">Ko&apos;nikma qo&apos;shilmagan</span>
+            )}
+          </div>
+          <div className="flex items-center justify-between text-[11px]">
+            <span className="text-[#9a9aa2]">{projectsCount} ta loyiha ko&apos;rsatilgan</span>
+            <span className="font-semibold text-[#ff8a3d]">Ko&apos;rish →</span>
+          </div>
+        </Link>
+
         <div className="rounded-[20px] border border-[#232327] bg-[#131316] p-5">
           <div className="mb-4 flex items-center gap-3.5">
             <div className="h-[52px] w-[52px] flex-shrink-0 rounded-2xl bg-gradient-to-br from-[#ff8a3d] to-[#7a3d10]" />

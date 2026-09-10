@@ -25,6 +25,9 @@ model User {
   prayerImportant     Boolean?
   incomeRange         String?
 
+  title String?
+  bio   String?
+
   tasks         Task[]
   habits        Habit[]
   habitLogs     HabitLog[]
@@ -33,6 +36,10 @@ model User {
   careerItems   CareerItem[]
   mediaLogs     MediaLog[]
   prayerLogs    PrayerLog[]
+  skills        Skill[]
+  projects      Project[]
+  assets        Asset[]
+  liabilities   Liability[]
 }
 
 enum Gender {
@@ -165,6 +172,54 @@ model CareerItem {
   category    String
   date        DateTime @default(now())
   link        String?
+}
+
+model Skill {
+  id          String @id @default(cuid())
+  userId      String
+  user        User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name        String
+  proficiency Int    @default(50)
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title       String
+  description String?
+  tags        String?
+  link        String?
+  createdAt   DateTime @default(now())
+}
+
+model Asset {
+  id        String        @id @default(cuid())
+  userId    String
+  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String
+  category  AssetCategory
+  value     Decimal       @db.Decimal(14, 2)
+  notes     String?
+  createdAt DateTime      @default(now())
+}
+
+enum AssetCategory {
+  HOME
+  CAR
+  INVESTMENT
+  CASH
+  OTHER
+}
+
+model Liability {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String
+  amount    Decimal  @db.Decimal(14, 2)
+  notes     String?
+  createdAt DateTime @default(now())
 }
 
 model MediaLog {
