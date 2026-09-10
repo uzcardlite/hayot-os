@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { AvatarViewer } from "@/components/avatar-viewer";
@@ -191,6 +192,16 @@ export default async function DashboardPage() {
                   <path d="M9 5 L16 12 L9 19" />
                 </svg>
               </button>
+
+              <Link
+                href="/avatar"
+                className="absolute bottom-[86px] left-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full bg-[#ff8a3d] px-5 py-2.5 text-xs font-semibold text-[#0a0a0d]"
+              >
+                3D avatar yaratish
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0a0a0d" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 5 L16 12 L9 19" />
+                </svg>
+              </Link>
             </>
           )}
 
