@@ -34,7 +34,7 @@ export function parseQuickAdd(raw: string): ParsedQuickAdd {
     text = text.replace(/\bindinga\b/i, "").trim();
   } else {
     for (let i = 0; i < WEEKDAYS.length; i++) {
-      const re = new RegExp(`\\b${WEEKDAYS[i]}(?:si|kuni)?\\b`, "i");
+      const re = new RegExp(`\\b${WEEKDAYS[i]}(?:si)?\\b(?:\\s+kuni\\b)?`, "i");
       if (re.test(text)) {
         const d = new Date(today);
         let diff = (i - d.getDay() + 7) % 7;
