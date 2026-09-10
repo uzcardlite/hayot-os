@@ -1,5 +1,6 @@
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { AvatarViewer } from "@/components/avatar-viewer";
 
 const DAY_LABELS = ["D", "S", "C", "P", "J", "J", "SH"];
 
@@ -49,7 +50,10 @@ export default async function DashboardPage() {
     recentTasks,
     recentTransactions,
   ] = await Promise.all([
-    prisma.user.findUnique({ where: { id: userId }, select: { name: true, gender: true } }),
+    prisma.user.findUnique({
+      where: { id: userId },
+      select: { name: true, gender: true, avatarUrl: true },
+    }),
     prisma.task.count({ where: { userId, status: { not: "DONE" } } }),
     prisma.task.count({ where: { userId, status: "DONE" } }),
     prisma.task.count({ where: { userId } }),
@@ -149,38 +153,46 @@ export default async function DashboardPage() {
             360° · <span className="font-semibold text-[#f5f4f2]">{user?.name ?? "Siz"}</span>
           </div>
 
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="relative h-[380px] w-[220px]">
-              <div className="absolute left-1/2 top-[36%] h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#ff8a3d] opacity-15 blur-[60px]" />
-              <svg width="220" height="380" viewBox="0 0 260 460" className="relative z-10">
-                <defs>
-                  <linearGradient id="bodyFill" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#3a3a42" />
-                    <stop offset="100%" stopColor="#18181c" />
-                  </linearGradient>
-                </defs>
-                {isFemale && <path d="M78 118 C78 84 100 62 130 62 C160 62 182 84 182 118 C182 96 168 84 130 84 C92 84 78 96 78 118 Z" fill="url(#bodyFill)" />}
-                <ellipse cx="130" cy="150" rx="46" ry="52" fill="url(#bodyFill)" />
-                <path
-                  d="M62 300 C62 220 90 196 130 196 C170 196 198 220 198 300 L206 440 L172 440 L160 320 L150 440 L110 440 L100 320 L88 440 L54 440 Z"
-                  fill="url(#bodyFill)"
-                />
-                <ellipse cx="130" cy="452" rx="70" ry="8" fill="#ff8a3d" opacity="0.18" />
-              </svg>
-              <div className="absolute -bottom-1.5 left-1/2 h-0.5 w-[190px] -translate-x-1/2 bg-gradient-to-r from-transparent via-[#ff8a3d] to-transparent opacity-70" />
+          {user?.avatarUrl ? (
+            <div className="absolute inset-0">
+              <AvatarViewer url={user.avatarUrl} />
             </div>
-          </div>
+          ) : (
+            <>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="relative h-[380px] w-[220px]">
+                  <div className="absolute left-1/2 top-[36%] h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#ff8a3d] opacity-15 blur-[60px]" />
+                  <svg width="220" height="380" viewBox="0 0 260 460" className="relative z-10">
+                    <defs>
+                      <linearGradient id="bodyFill" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#3a3a42" />
+                        <stop offset="100%" stopColor="#18181c" />
+                      </linearGradient>
+                    </defs>
+                    {isFemale && <path d="M78 118 C78 84 100 62 130 62 C160 62 182 84 182 118 C182 96 168 84 130 84 C92 84 78 96 78 118 Z" fill="url(#bodyFill)" />}
+                    <ellipse cx="130" cy="150" rx="46" ry="52" fill="url(#bodyFill)" />
+                    <path
+                      d="M62 300 C62 220 90 196 130 196 C170 196 198 220 198 300 L206 440 L172 440 L160 320 L150 440 L110 440 L100 320 L88 440 L54 440 Z"
+                      fill="url(#bodyFill)"
+                    />
+                    <ellipse cx="130" cy="452" rx="70" ry="8" fill="#ff8a3d" opacity="0.18" />
+                  </svg>
+                  <div className="absolute -bottom-1.5 left-1/2 h-0.5 w-[190px] -translate-x-1/2 bg-gradient-to-r from-transparent via-[#ff8a3d] to-transparent opacity-70" />
+                </div>
+              </div>
 
-          <button className="absolute left-6 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[#2b2b30] bg-white/[0.06]">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e8e7e4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M15 5 L8 12 L15 19" />
-            </svg>
-          </button>
-          <button className="absolute right-6 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[#2b2b30] bg-white/[0.06]">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e8e7e4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M9 5 L16 12 L9 19" />
-            </svg>
-          </button>
+              <button className="absolute left-6 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[#2b2b30] bg-white/[0.06]">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e8e7e4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M15 5 L8 12 L15 19" />
+                </svg>
+              </button>
+              <button className="absolute right-6 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-[#2b2b30] bg-white/[0.06]">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e8e7e4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 5 L16 12 L9 19" />
+                </svg>
+              </button>
+            </>
+          )}
 
           <div className="absolute inset-x-0 bottom-0 z-10 flex items-center justify-between bg-gradient-to-t from-black/55 to-transparent px-6 py-5">
             <div>

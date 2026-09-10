@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { AvatarCreator } from "@/components/avatar-creator";
 
 const SECTIONS = [
   "Shaxsiy ma'lumotlar",
@@ -9,6 +10,7 @@ const SECTIONS = [
   "Kunlik tartib",
   "Ibodat va qadriyatlar",
   "Moliyaviy holat",
+  "3D avatar yaratish",
 ];
 
 const FOCUS_AREAS = ["Sog'liq", "Karyera", "Ibodat", "Moliya", "O'qish", "Oila"];
@@ -37,7 +39,7 @@ export default function OnboardingPage() {
   const [prayerImportant, setPrayerImportant] = useState(true);
   const [incomeRange, setIncomeRange] = useState(INCOME_RANGES[0]);
 
-  async function finish() {
+  async function finish(finalAvatarUrl: string | null) {
     setSubmitting(true);
     await fetch("/api/onboarding", {
       method: "POST",
@@ -51,10 +53,15 @@ export default function OnboardingPage() {
         sleepTime,
         prayerImportant,
         incomeRange,
+        avatarUrl: finalAvatarUrl,
       }),
     });
     setSubmitting(false);
     setDone(true);
+  }
+
+  function handleAvatarExported(url: string) {
+    finish(url);
   }
 
   if (done) {
@@ -370,19 +377,49 @@ export default function OnboardingPage() {
             </div>
           )}
 
-          <div className="mt-9 flex items-center justify-between">
-            {step > 0 ? (
-              <button
-                onClick={() => setStep(step - 1)}
-                className="text-sm text-[#6b6b73]"
-              >
-                ← Ortga
-              </button>
-            ) : (
-              <span />
-            )}
+          {step === 5 && (
+            <div>
+              <h2 className="mb-2 text-2xl font-bold tracking-tight">
+                3D avataringizni yarating
+              </h2>
+              <p className="mb-6 text-sm text-[#6b6b73]">
+                O&apos;zingizga o&apos;xshash 3D qiyofa tanlang — bosh
+                sahifangizda jonli 360° ko&apos;rinishda chiqadi
+              </p>
 
-            {step < SECTIONS.length - 1 ? (
+              <div className="mb-6 h-[420px] overflow-hidden rounded-2xl">
+                {submitting ? (
+                  <div className="flex h-full items-center justify-center text-sm text-[#9a9aa2]">
+                    Saqlanmoqda...
+                  </div>
+                ) : (
+                  <AvatarCreator onComplete={handleAvatarExported} />
+                )}
+              </div>
+
+              <button
+                onClick={() => finish(null)}
+                disabled={submitting}
+                className="text-sm text-[#6b6b73] disabled:opacity-60"
+              >
+                Hozircha o&apos;tkazib yuborish →
+              </button>
+            </div>
+          )}
+
+          {step < 5 && (
+            <div className="mt-9 flex items-center justify-between">
+              {step > 0 ? (
+                <button
+                  onClick={() => setStep(step - 1)}
+                  className="text-sm text-[#6b6b73]"
+                >
+                  ← Ortga
+                </button>
+              ) : (
+                <span />
+              )}
+
               <button
                 onClick={() => setStep(step + 1)}
                 className="flex items-center gap-2 rounded-full bg-[#ff8a3d] px-6 py-3 text-sm font-semibold text-[#0a0a0d]"
@@ -392,19 +429,8 @@ export default function OnboardingPage() {
                   <path d="M9 5 L16 12 L9 19" />
                 </svg>
               </button>
-            ) : (
-              <button
-                onClick={finish}
-                disabled={submitting}
-                className="flex items-center gap-2 rounded-full bg-[#ff8a3d] px-6 py-3 text-sm font-semibold text-[#0a0a0d] disabled:opacity-60"
-              >
-                {submitting ? "Saqlanmoqda..." : "Yakunlash"}
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0a0a0d" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M9 5 L16 12 L9 19" />
-                </svg>
-              </button>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

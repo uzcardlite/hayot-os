@@ -17,6 +17,7 @@ export async function POST(req: Request) {
     sleepTime,
     prayerImportant,
     incomeRange,
+    avatarUrl,
   } = await req.json();
 
   const user = await prisma.user.update({
@@ -30,6 +31,7 @@ export async function POST(req: Request) {
       sleepTime,
       prayerImportant: Boolean(prayerImportant),
       incomeRange,
+      avatarUrl: avatarUrl || null,
       onboardingCompleted: true,
     },
   });
