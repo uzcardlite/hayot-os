@@ -1,24 +1,6 @@
-"use client";
-
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { AvatarCreator } from "@/components/avatar-creator";
+import Link from "next/link";
 
 export default function AvatarSetupPage() {
-  const router = useRouter();
-  const [saving, setSaving] = useState(false);
-
-  async function handleComplete(url: string) {
-    setSaving(true);
-    await fetch("/api/avatar", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ avatarUrl: url }),
-    });
-    router.push("/dashboard");
-    router.refresh();
-  }
-
   return (
     <div className="mx-auto max-w-2xl">
       <h1 className="mb-1 text-2xl font-semibold text-[#f5f4f2]">
@@ -29,15 +11,27 @@ export default function AvatarSetupPage() {
         360° ko&apos;rinishda chiqadi.
       </p>
 
-      <div className="h-[560px] overflow-hidden rounded-2xl border border-[#232327]">
-        {saving ? (
-          <div className="flex h-full items-center justify-center text-sm text-[#9a9aa2]">
-            Saqlanmoqda...
-          </div>
-        ) : (
-          <AvatarCreator onComplete={handleComplete} />
-        )}
+      <div className="flex h-[420px] flex-col items-center justify-center gap-3 rounded-2xl border border-[#232327] bg-[#131316] px-8 text-center">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#6b6b73" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="8" r="4.2" />
+          <path d="M5 21 C5 15.5 8 13 12 13 C16 13 19 15.5 19 21" />
+        </svg>
+        <p className="text-sm font-medium text-[#c9c9ce]">
+          3D avatar yaratish hozircha mavjud emas
+        </p>
+        <p className="max-w-xs text-xs text-[#6b6b73]">
+          Bu funksiyani ta&apos;minlovchi xizmat yopilgani sababli vaqtincha
+          o&apos;chirilgan. Tez orada boshqa provayder bilan qayta ishga
+          tushadi.
+        </p>
       </div>
+
+      <Link
+        href="/dashboard"
+        className="mt-6 inline-block text-sm text-[#6b6b73]"
+      >
+        ← Bosh sahifaga qaytish
+      </Link>
     </div>
   );
 }

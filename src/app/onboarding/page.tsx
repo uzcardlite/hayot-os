@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { AvatarCreator } from "@/components/avatar-creator";
 
 const SECTIONS = [
   "Shaxsiy ma'lumotlar",
@@ -58,10 +57,6 @@ export default function OnboardingPage() {
     });
     setSubmitting(false);
     setDone(true);
-  }
-
-  function handleAvatarExported(url: string) {
-    finish(url);
   }
 
   if (done) {
@@ -387,13 +382,24 @@ export default function OnboardingPage() {
                 sahifangizda jonli 360° ko&apos;rinishda chiqadi
               </p>
 
-              <div className="mb-6 h-[420px] overflow-hidden rounded-2xl">
+              <div className="mb-6 flex h-[420px] flex-col items-center justify-center gap-3 rounded-2xl border border-[#232327] bg-[#131316] px-8 text-center">
                 {submitting ? (
-                  <div className="flex h-full items-center justify-center text-sm text-[#9a9aa2]">
-                    Saqlanmoqda...
-                  </div>
+                  <span className="text-sm text-[#9a9aa2]">Saqlanmoqda...</span>
                 ) : (
-                  <AvatarCreator onComplete={handleAvatarExported} />
+                  <>
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#6b6b73" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="8" r="4.2" />
+                      <path d="M5 21 C5 15.5 8 13 12 13 C16 13 19 15.5 19 21" />
+                    </svg>
+                    <p className="text-sm font-medium text-[#c9c9ce]">
+                      3D avatar yaratish hozircha mavjud emas
+                    </p>
+                    <p className="max-w-xs text-xs text-[#6b6b73]">
+                      Bu funksiyani ta&apos;minlovchi xizmat yopilgani sababli
+                      vaqtincha o&apos;chirilgan. Tez orada boshqa provayder
+                      bilan qayta ishga tushadi.
+                    </p>
+                  </>
                 )}
               </div>
 
