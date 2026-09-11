@@ -101,26 +101,26 @@ export default function HabitsPage() {
 
   return (
     <div className="mx-auto max-w-3xl">
-      <h1 className="mb-1 text-2xl font-semibold text-slate-50">Odatlar</h1>
-      <p className="mb-6 text-sm text-slate-400">
+      <h1 className="mb-1 text-2xl font-semibold text-[#f7f0e6]">Odatlar</h1>
+      <p className="mb-6 text-sm text-[#baa898]">
         Kunlik odatlaringizni kuzating, streak saqlab qoling.
       </p>
 
       <form
         onSubmit={addHabit}
-        className="mb-8 flex flex-col gap-3 rounded-xl border border-slate-800 bg-slate-900 p-4 sm:flex-row sm:items-center"
+        className="mb-8 flex flex-col gap-3 rounded-xl border border-[#332a1f] bg-[#1e1812] p-4 sm:flex-row sm:items-center"
       >
         <input
           type="text"
           placeholder="Yangi odat (masalan: Sport)..."
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="flex-1 rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-100 outline-none focus:border-indigo-500"
+          className="flex-1 rounded-lg border border-[#332a1f] bg-[#241d16] px-3 py-2 text-sm text-[#f7f0e6] outline-none focus:border-[#f0965a]"
         />
         <select
           value={targetDays}
           onChange={(e) => setTargetDays(Number(e.target.value))}
-          className="rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-100 outline-none focus:border-indigo-500"
+          className="rounded-lg border border-[#332a1f] bg-[#241d16] px-3 py-2 text-sm text-[#f7f0e6] outline-none focus:border-[#f0965a]"
         >
           {[1, 2, 3, 4, 5, 6, 7].map((n) => (
             <option key={n} value={n}>
@@ -130,14 +130,14 @@ export default function HabitsPage() {
         </select>
         <button
           type="submit"
-          className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-500"
+          className="rounded-lg bg-[#f0965a] px-4 py-2 text-sm font-medium text-[#14100c] hover:bg-[#e0854a]"
         >
           Qo&apos;shish
         </button>
       </form>
 
       {loading ? (
-        <p className="text-slate-500">Yuklanmoqda...</p>
+        <p className="text-[#8f8071]">Yuklanmoqda...</p>
       ) : (
         <div className="flex flex-col gap-3">
           {habits.map((habit) => {
@@ -149,15 +149,15 @@ export default function HabitsPage() {
             return (
               <div
                 key={habit.id}
-                className="rounded-xl border border-slate-800 bg-slate-900 p-4"
+                className="rounded-xl border border-[#332a1f] bg-[#1e1812] p-4"
               >
                 <div className="mb-3 flex items-center justify-between">
                   <div>
-                    <p className="font-medium text-slate-100">{habit.title}</p>
-                    <p className="text-xs text-slate-500">
+                    <p className="font-medium text-[#f7f0e6]">{habit.title}</p>
+                    <p className="text-xs text-[#8f8071]">
                       Haftada {habit.targetDaysPerWeek} kun maqsad
                       {streak > 0 && (
-                        <span className="ml-2 text-amber-400">
+                        <span className="ml-2 text-[#f0965a]">
                           🔥 {streak} kunlik streak
                         </span>
                       )}
@@ -165,7 +165,7 @@ export default function HabitsPage() {
                   </div>
                   <button
                     onClick={() => removeHabit(habit.id)}
-                    className="text-slate-500 hover:text-red-400"
+                    className="text-[#8f8071] hover:text-[#f87171]"
                   >
                     ✕
                   </button>
@@ -182,9 +182,9 @@ export default function HabitsPage() {
                         onClick={() => toggleDay(habit.id, d)}
                         className={`flex h-10 w-10 flex-col items-center justify-center rounded-lg text-xs font-medium transition ${
                           done
-                            ? "bg-indigo-600 text-white"
-                            : "bg-slate-800 text-slate-500 hover:bg-slate-700"
-                        } ${isToday ? "ring-2 ring-indigo-400" : ""}`}
+                            ? "bg-[#f0965a] text-[#14100c]"
+                            : "bg-[#241d16] text-[#8f8071] hover:bg-[#332a1f]"
+                        } ${isToday ? "ring-2 ring-[#f0965a]" : ""}`}
                         title={key}
                       >
                         {DAY_LABELS[d.getDay()]}
@@ -197,7 +197,7 @@ export default function HabitsPage() {
           })}
 
           {habits.length === 0 && (
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-[#8f8071]">
               Hozircha odat qo&apos;shilmagan. Yuqoridagi forma orqali birinchi
               odatingizni qo&apos;shing.
             </p>

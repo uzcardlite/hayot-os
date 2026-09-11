@@ -71,14 +71,14 @@ export default function MediaPage() {
 
   return (
     <div className="mx-auto max-w-3xl">
-      <h1 className="mb-1 text-2xl font-semibold text-slate-50">Media</h1>
-      <p className="mb-6 text-sm text-slate-400">
+      <h1 className="mb-1 text-2xl font-semibold text-[#f7f0e6]">Media</h1>
+      <p className="mb-6 text-sm text-[#baa898]">
         Tomosha qilgan va o&apos;qigan kontentingizni jurnal sifatida saqlang.
       </p>
 
       <form
         onSubmit={addItem}
-        className="mb-8 flex flex-col gap-3 rounded-xl border border-slate-800 bg-slate-900 p-4"
+        className="mb-8 flex flex-col gap-3 rounded-xl border border-[#332a1f] bg-[#1e1812] p-4"
       >
         <div className="flex flex-col gap-3 sm:flex-row">
           <input
@@ -86,12 +86,12 @@ export default function MediaPage() {
             placeholder="Nomi..."
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="flex-1 rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-100 outline-none focus:border-indigo-500"
+            className="flex-1 rounded-lg border border-[#332a1f] bg-[#241d16] px-3 py-2 text-sm text-[#f7f0e6] outline-none focus:border-[#f0965a]"
           />
           <select
             value={type}
             onChange={(e) => setType(e.target.value as MediaType)}
-            className="rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-100 outline-none focus:border-indigo-500"
+            className="rounded-lg border border-[#332a1f] bg-[#241d16] px-3 py-2 text-sm text-[#f7f0e6] outline-none focus:border-[#f0965a]"
           >
             {Object.entries(TYPE_LABEL).map(([value, label]) => (
               <option key={value} value={value}>
@@ -107,7 +107,7 @@ export default function MediaPage() {
               key={n}
               type="button"
               onClick={() => setRating(n === rating ? 0 : n)}
-              className={`text-xl ${n <= rating ? "text-amber-400" : "text-slate-700"}`}
+              className={`text-xl ${n <= rating ? "text-[#f0965a]" : "text-[#8f8071]"}`}
             >
               ★
             </button>
@@ -119,39 +119,39 @@ export default function MediaPage() {
           placeholder="Izoh (ixtiyoriy)"
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
-          className="rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-100 outline-none focus:border-indigo-500"
+          className="rounded-lg border border-[#332a1f] bg-[#241d16] px-3 py-2 text-sm text-[#f7f0e6] outline-none focus:border-[#f0965a]"
         />
 
         <button
           type="submit"
-          className="rounded-lg bg-indigo-600 py-2 text-sm font-medium text-white hover:bg-indigo-500"
+          className="rounded-lg bg-[#f0965a] py-2 text-sm font-medium text-[#14100c] hover:bg-[#e0854a]"
         >
           Qo&apos;shish
         </button>
       </form>
 
       {loading ? (
-        <p className="text-slate-500">Yuklanmoqda...</p>
+        <p className="text-[#8f8071]">Yuklanmoqda...</p>
       ) : (
         <ul className="flex flex-col gap-3">
           {items.map((item) => (
             <li
               key={item.id}
-              className="rounded-xl border border-slate-800 bg-slate-900 p-4"
+              className="rounded-xl border border-[#332a1f] bg-[#1e1812] p-4"
             >
               <div className="mb-1 flex items-start justify-between gap-3">
                 <div>
-                  <span className="mr-2 rounded-full bg-indigo-500/20 px-2 py-0.5 text-xs text-indigo-300">
+                  <span className="mr-2 rounded-full bg-[#f0965a2a] px-2 py-0.5 text-xs text-[#f0965a]">
                     {TYPE_LABEL[item.type]}
                   </span>
-                  <span className="text-xs text-slate-500">
+                  <span className="text-xs text-[#8f8071]">
                     {new Date(item.date).toLocaleDateString("uz-UZ")}
                   </span>
-                  <p className="mt-1 font-medium text-slate-100">{item.title}</p>
+                  <p className="mt-1 font-medium text-[#f7f0e6]">{item.title}</p>
                   {item.rating && (
-                    <p className="text-sm text-amber-400">
+                    <p className="text-sm text-[#f0965a]">
                       {"★".repeat(item.rating)}
-                      <span className="text-slate-700">
+                      <span className="text-[#8f8071]">
                         {"★".repeat(5 - item.rating)}
                       </span>
                     </p>
@@ -159,20 +159,20 @@ export default function MediaPage() {
                 </div>
                 <button
                   onClick={() => removeItem(item.id)}
-                  className="text-slate-500 hover:text-red-400"
+                  className="text-[#8f8071] hover:text-[#f87171]"
                 >
                   ✕
                 </button>
               </div>
 
               {item.notes && (
-                <p className="mt-1 text-sm text-slate-400">{item.notes}</p>
+                <p className="mt-1 text-sm text-[#baa898]">{item.notes}</p>
               )}
             </li>
           ))}
 
           {items.length === 0 && (
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-[#8f8071]">
               Hozircha hech narsa qo&apos;shilmagan. Yuqoridagi forma orqali
               birinchi film/kitob/videoingizni qo&apos;shing.
             </p>

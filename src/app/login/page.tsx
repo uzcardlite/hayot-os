@@ -35,10 +35,10 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-slate-950 px-4">
-      <div className="w-full max-w-sm rounded-2xl border border-slate-800 bg-slate-900 p-8 shadow-xl">
-        <h1 className="mb-1 text-2xl font-semibold text-slate-50">Hayot OS</h1>
-        <p className="mb-6 text-sm text-slate-400">Tizimga kirish</p>
+    <div className="flex min-h-screen items-center justify-center bg-[#14100c] px-4">
+      <div className="w-full max-w-sm rounded-2xl border border-[#332a1f] bg-[#1e1812] p-8 shadow-xl">
+        <h1 className="mb-1 text-2xl font-semibold text-[#f7f0e6]">Hayot OS</h1>
+        <p className="mb-6 text-sm text-[#baa898]">Tizimga kirish</p>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <input
@@ -47,7 +47,7 @@ export default function LoginPage() {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-slate-100 outline-none focus:border-indigo-500"
+            className="rounded-lg border border-[#332a1f] bg-[#241d16] px-3 py-2 text-[#f7f0e6] outline-none focus:border-[#f0965a]"
           />
           <input
             type="password"
@@ -55,7 +55,7 @@ export default function LoginPage() {
             placeholder="Parol"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-slate-100 outline-none focus:border-indigo-500"
+            className="rounded-lg border border-[#332a1f] bg-[#241d16] px-3 py-2 text-[#f7f0e6] outline-none focus:border-[#f0965a]"
           />
 
           {error && <p className="text-sm text-red-400">{error}</p>}
@@ -63,15 +63,15 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="mt-2 rounded-lg bg-indigo-600 py-2 font-medium text-white transition hover:bg-indigo-500 disabled:opacity-50"
+            className="mt-2 rounded-lg bg-[#f0965a] py-2 font-medium text-[#14100c] transition hover:bg-[#e0854a] disabled:opacity-50"
           >
             {loading ? "Kirilmoqda..." : "Kirish"}
           </button>
         </form>
 
-        <p className="mt-6 text-center text-sm text-slate-400">
+        <p className="mt-6 text-center text-sm text-[#baa898]">
           Hisobingiz yo&apos;qmi?{" "}
-          <Link href="/register" className="text-indigo-400 hover:underline">
+          <Link href="/register" className="text-[#f0965a] hover:underline">
             Ro&apos;yxatdan o&apos;tish
           </Link>
         </p>

@@ -84,35 +84,35 @@ export default function IbodatPage() {
 
   return (
     <div className="mx-auto max-w-3xl">
-      <h1 className="mb-1 text-2xl font-semibold text-slate-50">Ibodat</h1>
-      <p className="mb-2 text-sm text-slate-400">
+      <h1 className="mb-1 text-2xl font-semibold text-[#f7f0e6]">Ibodat</h1>
+      <p className="mb-2 text-sm text-[#baa898]">
         Har kungi 5 vaqt namozingizni belgilab boring.
       </p>
       {streak > 0 && (
-        <p className="mb-6 text-sm text-amber-400">
+        <p className="mb-6 text-sm text-[#f0965a]">
           🔥 {streak} kun ketma-ket barcha namozlar to&apos;liq
         </p>
       )}
 
       {loading ? (
-        <p className="text-slate-500">Yuklanmoqda...</p>
+        <p className="text-[#8f8071]">Yuklanmoqda...</p>
       ) : (
-        <div className="overflow-x-auto rounded-xl border border-slate-800 bg-slate-900 p-4">
+        <div className="overflow-x-auto rounded-xl border border-[#332a1f] bg-[#1e1812] p-4">
           <table className="w-full border-collapse text-center">
             <thead>
               <tr>
-                <th className="p-2 text-left text-xs font-medium uppercase tracking-wide text-slate-500">
+                <th className="p-2 text-left text-xs font-medium uppercase tracking-wide text-[#8f8071]">
                   Namoz
                 </th>
                 {days.map((d) => (
                   <th
                     key={toDateKey(d)}
                     className={`p-2 text-xs font-medium ${
-                      toDateKey(d) === todayKey ? "text-indigo-400" : "text-slate-500"
+                      toDateKey(d) === todayKey ? "text-[#f0965a]" : "text-[#8f8071]"
                     }`}
                   >
                     {DAY_LABELS[d.getDay()]}
-                    <div className="text-[10px] text-slate-600">{d.getDate()}</div>
+                    <div className="text-[10px] text-[#8f8071]">{d.getDate()}</div>
                   </th>
                 ))}
               </tr>
@@ -120,7 +120,7 @@ export default function IbodatPage() {
             <tbody>
               {PRAYERS.map((prayer) => (
                 <tr key={prayer.key}>
-                  <td className="p-2 text-left text-sm font-medium text-slate-200">
+                  <td className="p-2 text-left text-sm font-medium text-[#f7f0e6]">
                     {prayer.label}
                   </td>
                   {days.map((d) => {
@@ -132,8 +132,8 @@ export default function IbodatPage() {
                           onClick={() => toggle(prayer.key, d)}
                           className={`h-9 w-9 rounded-lg text-sm font-medium transition ${
                             done
-                              ? "bg-emerald-600 text-white"
-                              : "bg-slate-800 text-slate-600 hover:bg-slate-700"
+                              ? "bg-[#34d399] text-[#14100c]"
+                              : "bg-[#241d16] text-[#8f8071] hover:bg-[#332a1f]"
                           }`}
                         >
                           {done ? "✓" : ""}

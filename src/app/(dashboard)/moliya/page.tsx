@@ -89,29 +89,29 @@ export default function MoliyaPage() {
 
   return (
     <div className="mx-auto max-w-3xl">
-      <h1 className="mb-1 text-2xl font-semibold text-slate-50">Moliya</h1>
-      <p className="mb-6 text-sm text-slate-400">
+      <h1 className="mb-1 text-2xl font-semibold text-[#f7f0e6]">Moliya</h1>
+      <p className="mb-6 text-sm text-[#baa898]">
         Kirim-chiqimlaringizni kuzatib boring.
       </p>
 
       <div className="mb-8 grid grid-cols-3 gap-4">
-        <div className="rounded-xl border border-slate-800 bg-slate-900 p-4">
-          <p className="text-xs text-slate-500">Bu oy kirim</p>
-          <p className="mt-1 text-lg font-semibold text-emerald-400">
+        <div className="rounded-xl border border-[#332a1f] bg-[#1e1812] p-4">
+          <p className="text-xs text-[#8f8071]">Bu oy kirim</p>
+          <p className="mt-1 text-lg font-semibold text-[#34d399]">
             {formatSum(income)}
           </p>
         </div>
-        <div className="rounded-xl border border-slate-800 bg-slate-900 p-4">
-          <p className="text-xs text-slate-500">Bu oy chiqim</p>
-          <p className="mt-1 text-lg font-semibold text-red-400">
+        <div className="rounded-xl border border-[#332a1f] bg-[#1e1812] p-4">
+          <p className="text-xs text-[#8f8071]">Bu oy chiqim</p>
+          <p className="mt-1 text-lg font-semibold text-[#f87171]">
             {formatSum(expense)}
           </p>
         </div>
-        <div className="rounded-xl border border-slate-800 bg-slate-900 p-4">
-          <p className="text-xs text-slate-500">Balans</p>
+        <div className="rounded-xl border border-[#332a1f] bg-[#1e1812] p-4">
+          <p className="text-xs text-[#8f8071]">Balans</p>
           <p
             className={`mt-1 text-lg font-semibold ${
-              balance >= 0 ? "text-slate-100" : "text-red-400"
+              balance >= 0 ? "text-[#f7f0e6]" : "text-[#f87171]"
             }`}
           >
             {formatSum(balance)}
@@ -121,7 +121,7 @@ export default function MoliyaPage() {
 
       <form
         onSubmit={addTransaction}
-        className="mb-8 flex flex-col gap-3 rounded-xl border border-slate-800 bg-slate-900 p-4"
+        className="mb-8 flex flex-col gap-3 rounded-xl border border-[#332a1f] bg-[#1e1812] p-4"
       >
         <div className="flex gap-2">
           <button
@@ -129,8 +129,8 @@ export default function MoliyaPage() {
             onClick={() => setType("EXPENSE")}
             className={`flex-1 rounded-lg py-2 text-sm font-medium transition ${
               type === "EXPENSE"
-                ? "bg-red-600 text-white"
-                : "bg-slate-800 text-slate-400 hover:bg-slate-700"
+                ? "bg-[#f87171] text-[#14100c]"
+                : "bg-[#241d16] text-[#baa898] hover:bg-[#332a1f]"
             }`}
           >
             Chiqim
@@ -140,8 +140,8 @@ export default function MoliyaPage() {
             onClick={() => setType("INCOME")}
             className={`flex-1 rounded-lg py-2 text-sm font-medium transition ${
               type === "INCOME"
-                ? "bg-emerald-600 text-white"
-                : "bg-slate-800 text-slate-400 hover:bg-slate-700"
+                ? "bg-[#34d399] text-[#14100c]"
+                : "bg-[#241d16] text-[#baa898] hover:bg-[#332a1f]"
             }`}
           >
             Kirim
@@ -154,7 +154,7 @@ export default function MoliyaPage() {
             placeholder="Summa (so'm)"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
-            className="flex-1 rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-100 outline-none focus:border-indigo-500"
+            className="flex-1 rounded-lg border border-[#332a1f] bg-[#241d16] px-3 py-2 text-sm text-[#f7f0e6] outline-none focus:border-[#f0965a]"
           />
           <input
             type="text"
@@ -162,7 +162,7 @@ export default function MoliyaPage() {
             placeholder="Kategoriya"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="flex-1 rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-100 outline-none focus:border-indigo-500"
+            className="flex-1 rounded-lg border border-[#332a1f] bg-[#241d16] px-3 py-2 text-sm text-[#f7f0e6] outline-none focus:border-[#f0965a]"
           />
           <datalist id="category-suggestions">
             {CATEGORY_SUGGESTIONS.map((c) => (
@@ -176,41 +176,41 @@ export default function MoliyaPage() {
           placeholder="Izoh (ixtiyoriy)"
           value={note}
           onChange={(e) => setNote(e.target.value)}
-          className="rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-100 outline-none focus:border-indigo-500"
+          className="rounded-lg border border-[#332a1f] bg-[#241d16] px-3 py-2 text-sm text-[#f7f0e6] outline-none focus:border-[#f0965a]"
         />
 
         <button
           type="submit"
-          className="rounded-lg bg-indigo-600 py-2 text-sm font-medium text-white hover:bg-indigo-500"
+          className="rounded-lg bg-[#f0965a] py-2 text-sm font-medium text-[#14100c] hover:bg-[#e0854a]"
         >
           Qo&apos;shish
         </button>
       </form>
 
       {loading ? (
-        <p className="text-slate-500">Yuklanmoqda...</p>
+        <p className="text-[#8f8071]">Yuklanmoqda...</p>
       ) : (
         <ul className="flex flex-col gap-2">
           {transactions.map((t) => (
             <li
               key={t.id}
-              className="flex items-center gap-3 rounded-lg border border-slate-800 bg-slate-900 px-4 py-3"
+              className="flex items-center gap-3 rounded-lg border border-[#332a1f] bg-[#1e1812] px-4 py-3"
             >
               <span
                 className={`h-2 w-2 rounded-full ${
-                  t.type === "INCOME" ? "bg-emerald-500" : "bg-red-500"
+                  t.type === "INCOME" ? "bg-[#34d399]" : "bg-[#f87171]"
                 }`}
               />
               <div className="flex-1">
-                <p className="text-sm text-slate-100">{t.category}</p>
-                {t.note && <p className="text-xs text-slate-500">{t.note}</p>}
+                <p className="text-sm text-[#f7f0e6]">{t.category}</p>
+                {t.note && <p className="text-xs text-[#8f8071]">{t.note}</p>}
               </div>
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-[#8f8071]">
                 {new Date(t.date).toLocaleDateString("uz-UZ")}
               </p>
               <p
                 className={`w-32 text-right text-sm font-medium ${
-                  t.type === "INCOME" ? "text-emerald-400" : "text-red-400"
+                  t.type === "INCOME" ? "text-[#34d399]" : "text-[#f87171]"
                 }`}
               >
                 {t.type === "INCOME" ? "+" : "-"}
@@ -218,7 +218,7 @@ export default function MoliyaPage() {
               </p>
               <button
                 onClick={() => removeTransaction(t.id)}
-                className="text-slate-500 hover:text-red-400"
+                className="text-[#8f8071] hover:text-[#f87171]"
               >
                 ✕
               </button>
@@ -226,7 +226,7 @@ export default function MoliyaPage() {
           ))}
 
           {transactions.length === 0 && (
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-[#8f8071]">
               Hozircha tranzaksiya yo&apos;q. Yuqoridagi forma orqali birinchi
               kirim yoki chiqimingizni qo&apos;shing.
             </p>

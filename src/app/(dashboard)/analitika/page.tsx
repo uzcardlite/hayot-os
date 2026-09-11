@@ -150,8 +150,8 @@ export default async function AnalitikaPage() {
 
   return (
     <div className="mx-auto max-w-3xl">
-      <h1 className="mb-1 text-2xl font-semibold text-slate-50">Analitika</h1>
-      <p className="mb-8 text-sm text-slate-400">
+      <h1 className="mb-1 text-2xl font-semibold text-[#f7f0e6]">Analitika</h1>
+      <p className="mb-8 text-sm text-[#baa898]">
         Barcha modullardan umumiy holat va so&apos;nggi 7 kunlik faollik.
       </p>
 
@@ -159,16 +159,16 @@ export default async function AnalitikaPage() {
         {statTiles.map((s) => (
           <div
             key={s.label}
-            className="rounded-xl border border-slate-800 bg-slate-900 p-4"
+            className="rounded-xl border border-[#332a1f] bg-[#1e1812] p-4"
           >
-            <p className="text-2xl font-semibold text-slate-50">{s.value}</p>
-            <p className="mt-1 text-xs text-slate-500">{s.label}</p>
+            <p className="text-2xl font-semibold text-[#f7f0e6]">{s.value}</p>
+            <p className="mt-1 text-xs text-[#8f8071]">{s.label}</p>
           </div>
         ))}
       </div>
 
-      <div className="mb-8 rounded-xl border border-slate-800 bg-slate-900 p-4">
-        <h2 className="mb-4 text-sm font-medium text-slate-300">
+      <div className="mb-8 rounded-xl border border-[#332a1f] bg-[#1e1812] p-4">
+        <h2 className="mb-4 text-sm font-medium text-[#d9cdbe]">
           Kunlik faollik (vazifa + odat + ibodat, so&apos;nggi 7 kun)
         </h2>
         <div className="flex items-end justify-between gap-2" style={{ height: 120 }}>
@@ -176,30 +176,30 @@ export default async function AnalitikaPage() {
             <div key={d.key} className="flex flex-1 flex-col items-center gap-2">
               <div className="flex h-full w-full items-end justify-center">
                 <div
-                  className="w-6 rounded-t-md bg-indigo-600"
+                  className="w-6 rounded-t-md bg-[#f0965a]"
                   style={{
                     height: `${Math.max(4, (d.total / maxActivity) * 100)}%`,
                   }}
                   title={`${d.total} ta faoliyat`}
                 />
               </div>
-              <span className="text-xs text-slate-500">{d.label}</span>
+              <span className="text-xs text-[#8f8071]">{d.label}</span>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="mb-8 rounded-xl border border-slate-800 bg-slate-900 p-4">
+      <div className="mb-8 rounded-xl border border-[#332a1f] bg-[#1e1812] p-4">
         <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-sm font-medium text-slate-300">
+          <h2 className="text-sm font-medium text-[#d9cdbe]">
             Bu oy moliya (kirim / chiqim)
           </h2>
-          <div className="flex items-center gap-3 text-xs text-slate-500">
+          <div className="flex items-center gap-3 text-xs text-[#8f8071]">
             <span className="flex items-center gap-1">
-              <span className="h-2 w-2 rounded-full bg-emerald-500" /> Kirim
+              <span className="h-2 w-2 rounded-full bg-[#34d399]" /> Kirim
             </span>
             <span className="flex items-center gap-1">
-              <span className="h-2 w-2 rounded-full bg-red-500" /> Chiqim
+              <span className="h-2 w-2 rounded-full bg-[#f87171]" /> Chiqim
             </span>
           </div>
         </div>
@@ -207,26 +207,26 @@ export default async function AnalitikaPage() {
           <div className="flex flex-col items-center gap-2">
             <div className="flex h-full items-end">
               <div
-                className="w-12 rounded-t-md bg-emerald-600"
+                className="w-12 rounded-t-md bg-[#34d399]"
                 style={{ height: `${Math.max(4, (income / maxFinance) * 100)}%` }}
               />
             </div>
-            <span className="text-xs text-slate-400">{formatSum(income)}</span>
+            <span className="text-xs text-[#baa898]">{formatSum(income)}</span>
           </div>
           <div className="flex flex-col items-center gap-2">
             <div className="flex h-full items-end">
               <div
-                className="w-12 rounded-t-md bg-red-600"
+                className="w-12 rounded-t-md bg-[#f87171]"
                 style={{ height: `${Math.max(4, (expense / maxFinance) * 100)}%` }}
               />
             </div>
-            <span className="text-xs text-slate-400">{formatSum(expense)}</span>
+            <span className="text-xs text-[#baa898]">{formatSum(expense)}</span>
           </div>
         </div>
       </div>
 
-      <div className="rounded-xl border border-slate-800 bg-slate-900 p-4">
-        <h2 className="mb-4 text-sm font-medium text-slate-300">
+      <div className="rounded-xl border border-[#332a1f] bg-[#1e1812] p-4">
+        <h2 className="mb-4 text-sm font-medium text-[#d9cdbe]">
           O&apos;qish holati
         </h2>
         <div className="flex flex-col gap-2">
@@ -237,8 +237,8 @@ export default async function AnalitikaPage() {
             { key: "DROPPED", label: "Tashlab qo'yilgan" },
           ].map((s) => (
             <div key={s.key} className="flex items-center gap-3">
-              <span className="w-32 text-xs text-slate-400">{s.label}</span>
-              <span className="text-sm font-medium text-slate-100">
+              <span className="w-32 text-xs text-[#baa898]">{s.label}</span>
+              <span className="text-sm font-medium text-[#f7f0e6]">
                 {learningCounts[s.key]}
               </span>
             </div>

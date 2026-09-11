@@ -28,10 +28,10 @@ const STATUS_LABEL: Record<ItemStatus, string> = {
 };
 
 const STATUS_COLOR: Record<ItemStatus, string> = {
-  PLANNED: "bg-slate-700 text-slate-200",
-  IN_PROGRESS: "bg-amber-500/20 text-amber-300",
-  DONE: "bg-emerald-500/20 text-emerald-300",
-  DROPPED: "bg-red-500/20 text-red-300",
+  PLANNED: "bg-[#332a1f] text-[#f7f0e6]",
+  IN_PROGRESS: "bg-[#f0965a2a] text-[#f0965a]",
+  DONE: "bg-[#34d3991f] text-[#34d399]",
+  DROPPED: "bg-[#f871711f] text-[#f87171]",
 };
 
 export default function OqishPage() {
@@ -83,26 +83,26 @@ export default function OqishPage() {
 
   return (
     <div className="mx-auto max-w-3xl">
-      <h1 className="mb-1 text-2xl font-semibold text-slate-50">O&apos;qish</h1>
-      <p className="mb-6 text-sm text-slate-400">
+      <h1 className="mb-1 text-2xl font-semibold text-[#f7f0e6]">O&apos;qish</h1>
+      <p className="mb-6 text-sm text-[#baa898]">
         Kitoblar, kurslar va ko&apos;nikmalaringizni kuzatib boring.
       </p>
 
       <form
         onSubmit={addItem}
-        className="mb-8 flex flex-col gap-3 rounded-xl border border-slate-800 bg-slate-900 p-4 sm:flex-row sm:items-center"
+        className="mb-8 flex flex-col gap-3 rounded-xl border border-[#332a1f] bg-[#1e1812] p-4 sm:flex-row sm:items-center"
       >
         <input
           type="text"
           placeholder="Kitob, kurs yoki ko'nikma nomi..."
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="flex-1 rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-100 outline-none focus:border-indigo-500"
+          className="flex-1 rounded-lg border border-[#332a1f] bg-[#241d16] px-3 py-2 text-sm text-[#f7f0e6] outline-none focus:border-[#f0965a]"
         />
         <select
           value={type}
           onChange={(e) => setType(e.target.value as ItemType)}
-          className="rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-100 outline-none focus:border-indigo-500"
+          className="rounded-lg border border-[#332a1f] bg-[#241d16] px-3 py-2 text-sm text-[#f7f0e6] outline-none focus:border-[#f0965a]"
         >
           {Object.entries(TYPE_LABEL).map(([value, label]) => (
             <option key={value} value={value}>
@@ -112,39 +112,39 @@ export default function OqishPage() {
         </select>
         <button
           type="submit"
-          className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-500"
+          className="rounded-lg bg-[#f0965a] px-4 py-2 text-sm font-medium text-[#14100c] hover:bg-[#e0854a]"
         >
           Qo&apos;shish
         </button>
       </form>
 
       {loading ? (
-        <p className="text-slate-500">Yuklanmoqda...</p>
+        <p className="text-[#8f8071]">Yuklanmoqda...</p>
       ) : (
         <ul className="flex flex-col gap-3">
           {items.map((item) => (
             <li
               key={item.id}
-              className="rounded-xl border border-slate-800 bg-slate-900 p-4"
+              className="rounded-xl border border-[#332a1f] bg-[#1e1812] p-4"
             >
               <div className="mb-2 flex items-center justify-between gap-3">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-slate-500">
+                  <span className="text-xs text-[#8f8071]">
                     {TYPE_LABEL[item.type]}
                   </span>
-                  <p className="font-medium text-slate-100">{item.title}</p>
+                  <p className="font-medium text-[#f7f0e6]">{item.title}</p>
                 </div>
                 <button
                   onClick={() => removeItem(item.id)}
-                  className="text-slate-500 hover:text-red-400"
+                  className="text-[#8f8071] hover:text-[#f87171]"
                 >
                   ✕
                 </button>
               </div>
 
-              <div className="mb-3 h-2 w-full overflow-hidden rounded-full bg-slate-800">
+              <div className="mb-3 h-2 w-full overflow-hidden rounded-full bg-[#241d16]">
                 <div
-                  className="h-full rounded-full bg-indigo-600 transition-all"
+                  className="h-full rounded-full bg-[#f0965a] transition-all"
                   style={{ width: `${item.progress}%` }}
                 />
               </div>
@@ -159,7 +159,7 @@ export default function OqishPage() {
                 <select
                   value={item.status}
                   onChange={(e) => updateItem(item.id, { status: e.target.value })}
-                  className="rounded-lg border border-slate-700 bg-slate-800 px-2 py-1 text-xs text-slate-100 outline-none focus:border-indigo-500"
+                  className="rounded-lg border border-[#332a1f] bg-[#241d16] px-2 py-1 text-xs text-[#f7f0e6] outline-none focus:border-[#f0965a]"
                 >
                   {Object.entries(STATUS_LABEL).map(([value, label]) => (
                     <option key={value} value={value}>
@@ -176,9 +176,9 @@ export default function OqishPage() {
                   onChange={(e) =>
                     updateItem(item.id, { progress: Number(e.target.value) })
                   }
-                  className="ml-auto w-32 accent-indigo-600"
+                  className="ml-auto w-32 accent-[#f0965a]"
                 />
-                <span className="w-10 text-right text-xs text-slate-400">
+                <span className="w-10 text-right text-xs text-[#baa898]">
                   {item.progress}%
                 </span>
               </div>
@@ -186,7 +186,7 @@ export default function OqishPage() {
           ))}
 
           {items.length === 0 && (
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-[#8f8071]">
               Hozircha hech narsa qo&apos;shilmagan. Yuqoridagi forma orqali
               birinchi kitob yoki kursingizni qo&apos;shing.
             </p>
